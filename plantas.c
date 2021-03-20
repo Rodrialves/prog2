@@ -9,7 +9,24 @@
 
 planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas, int n_alcunhas, int n_sementes)
 {
-	return NULL;
+	FILE *f = fopen("db_small.txt", "r");
+	int i = 0;
+	nova
+	char *token = strtok(ID, ",");
+	planta *nova = (planta *)malloc(sizeof(planta));
+
+	while (fscanf("%s,%s,%d", &planta->ID[i], &planta->nome_cientifico[i], &planta->n_sementes) == 3)
+	//  while( token != NULL ) 
+	//  	token = strtok(NULL, ","");
+
+	{
+		if (sizeof(planta->ID) > 10 || sizeof(planta->nome_cientifico) > MAX_NAME)
+			return NULL;
+
+		
+		i++;
+	}
+	return nova;
 }
 
 colecao *colecao_nova(const char *tipo_ordem)
