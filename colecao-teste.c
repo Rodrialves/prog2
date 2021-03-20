@@ -4,6 +4,8 @@
 /*                  NAO ALTERAR ESTE FICHEIRO                    */
 /*****************************************************************/
 ola
+tudo
+
 
 #include <stdio.h>
 #include <stdlib.h>
