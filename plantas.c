@@ -12,6 +12,7 @@
 
 planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas, int n_alcunhas, int n_sementes)
 {
+	int i;
 	planta *nova = (planta *)malloc(sizeof(planta));
 
 	if (nova == NULL)
@@ -20,8 +21,16 @@ planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas
 	if (strlen(ID) > 10 || strlen(nome_cientifico) > MAX_NAME)
 		return NULL;
 
-	*nova->ID = ID;
-	*nova->nome_cientifico = nome_cientifico;
+	for(i=0;i<strlen(ID);i++)
+	{
+		nova->ID[i]=ID[i];
+	}
+
+	for(i=0;i<strlen(nome_cientifico);i++)
+	{
+		nova->nome_cientifico[i] = nome_cientifico[i];
+	}
+	
 	nova->n_alcunhas = n_alcunhas;
 	nova->n_sementes = n_sementes;
 	nova->alcunhas = alcunhas;
@@ -31,31 +40,66 @@ planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas
 
 colecao *colecao_nova(const char *tipo_ordem)
 {
-	colecao *c_nova = (colecao *)malloc(sizeof(colecao));
-	if (colecao == NULL)
-		return NULL;
-	return c_nova;
+
+	int i;
 	colecao *nova = (colecao *)malloc(sizeof(colecao));
 
-	if (nova == NULL || strcmp("nome", tipo_ordem) != 0 || strcmp("id", tipo_ordem) != 0)
+	if (nova == NULL)
 		return NULL;
+	
+	if(strcmp("nome",tipo_ordem)!=0)
+	{
+		if(strcmp("id",tipo_ordem)!=0)
+			return NULL;
+	}
 
 	nova->plantas = NULL;
-	nova->tamanho = NULL;
-	*nova->tipo_ordem = tipo_ordem;
+	nova->tamanho = 0;
+
+	for(i=0; i<strlen(tipo_ordem);i++)
+		nova->tipo_ordem[i]= tipo_ordem[i];
+
+	return nova;
 }
+
 int planta_insere(colecao *c, planta *p)
 {
-	if (p != NULL && planta_nova(ID, nome_cientifico, alcunhas, n_alcunhas, n_sementes) != NULL)
-		return 0;
-	tipo_ordem if (strcmp(p, colecao->plantas->ID) == 0) do
+	int i,flag=0,k=0,j,count=0;
+	if (p == NULL)
+		return -1;
+
+	for(i=0;i<c->tamanho;i++)
 	{
-		planta_nova(ID, nome_cientifico, alcunhas, n_alcunhas, n_sementes);
-		while (coelcao->plantas !=)
-			return 1;
-		if (p = NULL)
-			return -1;
+		if(strcmp(c->plantas[i]->ID,p->ID)!=0)
+		{
+			flag++;
+			k=i;
+			break;
+		}
 	}
+
+	if(flag)
+	{
+		c->plantas[k]->n_sementes += p->n_sementes;
+		for(i=0;i<c->plantas[k]->n_alcunhas;i++)
+		{
+			for(j=0;j<p->n_alcunhas;j++)
+			{
+				if(strcmp(c->plantas[k]->alcunhas[j],p->alcunhas[i])!=0)
+					count++;
+			}
+
+			if(count==c->plantas[k]->n_alcunhas)
+			{
+				c->plantas[k]->n_alcunhas++;
+				c->plantas[k]->alcunhas=(char **)realloc(c->plantas[k]->alcunhas,sizeof(char*)*c->plantas[k]->n_alcunhas);
+			}
+		}
+	}	
+	
+
+
+}
 int colecao_tamanho(colecao * c)
 {
 	return -1;
