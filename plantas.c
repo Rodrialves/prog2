@@ -12,7 +12,6 @@
 
 planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas, int n_alcunhas, int n_sementes)
 {
-	int i = 0;
 	planta *nova = (planta *)malloc(sizeof(planta));
 
 	if (nova == NULL)
@@ -32,10 +31,22 @@ planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas
 
 colecao *colecao_nova(const char *tipo_ordem)
 {
+<<<<<<< Updated upstream
 	colecao *c_nova = (colecao *)malloc(sizeof(colecao));
 	if (colecao == NULL)
 		return NULL;
 	return c_nova;
+=======
+	colecao *nova = (colecao *)malloc(sizeof(colecao));
+
+	if(nova==NULL || strcmp("nome",tipo_ordem)!=0 || strcmp("id",tipo_ordem)!=0)
+		return NULL;
+
+	nova->plantas=NULL;
+	nova->tamanho=NULL;
+	*nova->tipo_ordem=tipo_ordem;
+	
+>>>>>>> Stashed changes
 }
 int planta_insere(colecao *c, planta *p)
 {
