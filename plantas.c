@@ -3,29 +3,31 @@
 /*****************************************************************/
 
 #include "plantas.h"
+#include "lista.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 
+#define PATH "db_small.txt"
+
 planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas, int n_alcunhas, int n_sementes)
 {
-	FILE *f = fopen("db_small.txt", "r");
 	int i = 0;
-	nova
-	char *token = strtok(ID, ",");
 	planta *nova = (planta *)malloc(sizeof(planta));
 
-	while (fscanf("%s,%s,%d", &planta->ID[i], &planta->nome_cientifico[i], &planta->n_sementes) == 3)
-	//  while( token != NULL ) 
-	//  	token = strtok(NULL, ","");
+	if(nova==NULL)
+		return NULL;
 
-	{
-		if (sizeof(planta->ID) > 10 || sizeof(planta->nome_cientifico) > MAX_NAME)
-			return NULL;
+	if (strlen(ID) > 10 || strlen(nome_cientifico) > MAX_NAME)
+		return NULL;
 
-		
-		i++;
-	}
+	*nova->ID=ID;
+	*nova->nome_cientifico=nome_cientifico;
+	nova->n_alcunhas=n_alcunhas;
+	nova->n_sementes=n_sementes;
+	nova->alcunhas=alcunhas;
+
+
 	return nova;
 }
 
