@@ -31,22 +31,18 @@ planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas
 
 colecao *colecao_nova(const char *tipo_ordem)
 {
-<<<<<<< Updated upstream
 	colecao *c_nova = (colecao *)malloc(sizeof(colecao));
 	if (colecao == NULL)
 		return NULL;
 	return c_nova;
-=======
 	colecao *nova = (colecao *)malloc(sizeof(colecao));
 
-	if(nova==NULL || strcmp("nome",tipo_ordem)!=0 || strcmp("id",tipo_ordem)!=0)
+	if (nova == NULL || strcmp("nome", tipo_ordem) != 0 || strcmp("id", tipo_ordem) != 0)
 		return NULL;
 
-	nova->plantas=NULL;
-	nova->tamanho=NULL;
-	*nova->tipo_ordem=tipo_ordem;
-	
->>>>>>> Stashed changes
+	nova->plantas = NULL;
+	nova->tamanho = NULL;
+	*nova->tipo_ordem = tipo_ordem;
 }
 int planta_insere(colecao *c, planta *p)
 {
@@ -60,33 +56,33 @@ int planta_insere(colecao *c, planta *p)
 		if (p = NULL)
 			return -1;
 	}
-	int colecao_tamanho(colecao * c)
-	{
-		return -1;
-	}
+int colecao_tamanho(colecao * c)
+{
+	return -1;
+}
 
-	colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
-	{
-		return NULL;
-	}
-	planta *planta_remove(colecao * c, const char *nomep)
-	{
-		return NULL;
-	}
+colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
+{
+	return NULL;
+}
+planta *planta_remove(colecao * c, const char *nomep)
+{
+	return NULL;
+}
 
-	int planta_apaga(planta * p)
-	{
-		return -1;
-	}
-	int colecao_apaga(colecao * c)
-	{
-		return -1;
-	}
-	int *colecao_pesquisa_nome(colecao * c, const char *nomep, int *tam)
-	{
-		return NULL;
-	}
-	int colecao_reordena(colecao * c, const char *tipo_ordem)
-	{
-		return -1;
-	}
+int planta_apaga(planta * p)
+{
+	return -1;
+}
+int colecao_apaga(colecao * c)
+{
+	return -1;
+}
+int *colecao_pesquisa_nome(colecao * c, const char *nomep, int *tam)
+{
+	return NULL;
+}
+int colecao_reordena(colecao * c, const char *tipo_ordem)
+{
+	return -1;
+}
