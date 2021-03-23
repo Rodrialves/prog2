@@ -119,6 +119,7 @@ int verifica_planta_insere(colecao **c)
     planta *p3 = planta_nova("AEIOU", "Lirium", NULL, 0, 10);
     planta *p4 = planta_nova("UOIEA", "Eryngium", alcunhas_p1, 2, 8);
 
+
     erro = planta_insere(*c, p1);
 
     if (erro == -1)
