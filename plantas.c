@@ -187,66 +187,68 @@ int colecao_tamanho(colecao *c)
 
 colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
 {
-	// int i, n_sementes = 0, n_alcunhas = 0;
-	// char aux[MAX_LINE], nome_cientifico[MAX_NAME] , ID[10], num;
-	// char *token;
-	// char **alcunhas= calloc(1, sizeof(char *));
-	// planta *p;
-	// colecao *c_nova = colecao_nova(tipo_ordem);
-	// FILE *f = fopen(nome_ficheiro, "r");
+	int i, n_sementes = 0, n_alcunhas = 0;
+	char aux[MAX_LINE], nome_cientifico[MAX_NAME] , ID[10], num;
+	char *token;
+	char **alcunhas= calloc(1, sizeof(char *));
+	planta *p;
+	colecao *c_nova = colecao_nova(tipo_ordem);
+	FILE *f = fopen(nome_ficheiro, "r");
 
-	// //verificacoes
-	// if (nome_ficheiro == NULL || tipo_ordem == NULL || f == NULL)
-	// 	return NULL;
+	//verificacoes
+	if (nome_ficheiro == NULL || tipo_ordem == NULL || f == NULL)
+		return NULL;
 
-	// //le e copia
-	// while (fgets(aux, MAX_LINE, f) != NULL)
-	// {
-	// 	if (aux[strlen(aux) - 1] == '\n')
-	// 		aux[strlen(aux) - 1] = '\0';
+	//le e copia
+	while (fgets(aux, MAX_LINE, f) != NULL)
+	{
+		if (aux[strlen(aux) - 1] == '\n')
+			aux[strlen(aux) - 1] = '\0';
 
-	// 	printf("%s\n", aux);
+		printf("%s\n", aux);
 
-	// 	token = strtok(aux, TOKENS);
-	// 	strcpy(ID, token);
-	// 	// printf("\n%s",ID);
-	// 	token = strtok(NULL, TOKENS);
-	// 	strcpy(nome_cientifico, token);
-	// 	// printf(" %s",nome_cientifico);
-	// 	token = strtok(NULL, TOKENS);
-	// 	n_sementes=atoi(token);
-	// 	// printf(" %i",n_sementes);
-	// 	token = strtok(NULL, TOKENS);
-	// 	//caso tenha alcunhas
-	// 	while (token != NULL)
-	// 	{
-	// 		printf("%i",n_alcunhas);
-	// 		alcunhas = realloc(alcunhas, sizeof(char*)*(n_alcunhas + 1));
-	// 		alcunhas[n_alcunhas] = (char *)calloc(1,sizeof(char) * (strlen(token)+1));
-	// 		strcpy(alcunhas[n_alcunhas], token);
-	// 		token = strtok(NULL, TOKENS);
+		token = strtok(aux, TOKENS);
+		strcpy(ID, token);
+		// printf("\n%s",ID);
+		token = strtok(NULL, TOKENS);
+		strcpy(nome_cientifico, token);
+		// printf(" %s",nome_cientifico);
+		token = strtok(NULL, TOKENS);
+		n_sementes=atoi(token);
+		// printf(" %i",n_sementes);
+		token = strtok(NULL, TOKENS);
+		//caso tenha alcunhas
+		while (token != NULL)
+		{
+			printf("%i",n_alcunhas);
+			alcunhas = realloc(alcunhas, sizeof(char*)*(n_alcunhas + 1));
+			alcunhas[n_alcunhas] = (char *)calloc(1,sizeof(char) * (strlen(token)+1));
+			strcpy(alcunhas[n_alcunhas], token);
+			printf(" %s",alcunhas[n_alcunhas]);
+			printf("   %s",token);
+			token = strtok(NULL, TOKENS);
 
-	// 		n_alcunhas++;
-	// 		printf(" %s",alcunhas[n_alcunhas-1]);
-	// 		printf("   %s",token);
-	// 	}
-	// 	printf("\n");
-	// 	printf("%i",n_alcunhas);
-	// 	//prepara proxima iteracao
-	// 	p = planta_nova(ID, nome_cientifico, alcunhas, n_alcunhas, n_sementes);
-	// 	planta_insere(c_nova, p);
-	// 	planta_apaga(p);
+			n_alcunhas++;
+
+		}
+
+		printf("\n");
+		printf("%i",n_alcunhas);
+		//prepara proxima iteracao
+		p = planta_nova(ID, nome_cientifico, alcunhas, n_alcunhas, n_sementes);
+		planta_insere(c_nova, p);
+		planta_apaga(p);
 		
-	// 	for(i=0;i<n_alcunhas;i++)
-	// 	{
-	// 		free(alcunhas[i]);
-	// 	}
-	// 	//coloca a zero
-	// 	n_alcunhas = 0;
-	// 	n_sementes = 0;
-	// }
-	// free(alcunhas);
-	// fclose(f);
+		for(i=0;i<n_alcunhas;i++)
+		{
+			free(alcunhas[i]);
+		}
+		//coloca a zero
+		n_alcunhas = 0;
+		n_sementes = 0;
+	}
+	free(alcunhas);
+	fclose(f);
 
 	return NULL;
 }
