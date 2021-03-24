@@ -3,6 +3,7 @@
 /*****************************************************************/
 /*                  NAO ALTERAR ESTE FICHEIRO                    */
 /*****************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -118,7 +119,6 @@ int verifica_planta_insere(colecao **c)
     planta *p2 = planta_nova("ABC", "Rosae", alcunhas_p2, 1, 3);
     planta *p3 = planta_nova("AEIOU", "Lirium", NULL, 0, 10);
     planta *p4 = planta_nova("UOIEA", "Eryngium", alcunhas_p1, 2, 8);
-
 
     erro = planta_insere(*c, p1);
 
