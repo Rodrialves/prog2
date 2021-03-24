@@ -44,7 +44,6 @@ planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas
 colecao *colecao_nova(const char *tipo_ordem)
 {
 
-	int i;
 	colecao *nova = (colecao *)calloc(1, sizeof(colecao));
 
 	//verificacoes
